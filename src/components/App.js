@@ -152,11 +152,7 @@ class App extends Component {
 
   rowChange(id, value) {
     value = parseInt(value, 10);
-    console.log(id, value);
-    // this.state.expenses[id - 1].percentage = getUserPercentage(
-    //   this.state.income,
-    //   value
-    // );
+
     if (!value) {
       return 0;
     } else {
