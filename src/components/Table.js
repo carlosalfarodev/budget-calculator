@@ -44,6 +44,7 @@ class Table extends Component {
         columns={columns}
         cellEdit={cellEditFactory({
           mode: "click",
+          blurToSave: true,
           afterSaveCell: (oldValue, newValue, row, column) => {
             this.props.edit(row.id, newValue);
           }
