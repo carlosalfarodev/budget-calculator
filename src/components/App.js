@@ -150,19 +150,19 @@ class App extends Component {
     });
   }
 
-  populateActualPercentaje(id, value) {
-    // return this.state.expenses.map(expense => {
-    //   const percentage = getUserPercentage(this.state.income, value);
-    //   return { ...expense, percentage };
-    // });
-    console.log(id, value);
-  }
-
   rowChange(id, value) {
-    value = parseInt(value);
-    // console.log(id);
-    // console.log(this.state.expenses[id - 1]);
-    this.populateActualPercentaje(id, value);
+    value = parseInt(value, 10);
+    console.log(id, value);
+    // this.state.expenses[id - 1].percentage = getUserPercentage(
+    //   this.state.income,
+    //   value
+    // );
+    let stateCopy = Object.assign({}, this.state);
+    stateCopy.expenses[id - 1].percentage = getUserPercentage(
+      this.state.income,
+      value
+    );
+    this.setState(stateCopy);
   }
 
   render() {
