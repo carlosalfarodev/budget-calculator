@@ -3,7 +3,11 @@ import Header from "./Header";
 import Card from "./Card";
 import Balance from "./Balance";
 import Table from "./Table";
-import { getPercentage, getPercentageUsed } from "../helpers";
+import {
+  getPercentage,
+  getPercentageUsed,
+  getUserPercentage
+} from "../helpers";
 
 class App extends Component {
   constructor(props) {
@@ -13,101 +17,101 @@ class App extends Component {
         {
           id: 1,
           name: "Diezmos",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 10,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 2,
           name: "Ahorros",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 10,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 3,
           name: "Comida",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 13,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 4,
           name: "Servicios Publicos",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 10,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 5,
           name: "Vivienda",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 25,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 6,
           name: "Transporte",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 15,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 7,
           name: "Medico",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 3,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 8,
           name: "Ropa",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 8,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 9,
           name: "Personal",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 8,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 10,
           name: "Deudas",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 0,
-          diferencia: 0
+          difference: 0
         },
         {
           id: 11,
           name: "Recreasion",
-          cantidad: 0,
+          amount: 0,
           percentage: 0,
-          recommendedCantidad: 0,
+          recommendedAmount: 0,
           recommendedPercentage: 8,
-          diferencia: 0
+          difference: 0
         }
       ],
       income: 0,
@@ -138,18 +142,27 @@ class App extends Component {
 
   populateRecommended(income) {
     return this.state.expenses.map(expense => {
-      const recommendedCantidad = getPercentage(
+      const recommendedAmount = getPercentage(
         income,
         expense.recommendedPercentage
       );
-      return { ...expense, recommendedCantidad };
+      return { ...expense, recommendedAmount };
     });
   }
 
+  populateActualPercentaje(id, value) {
+    // return this.state.expenses.map(expense => {
+    //   const percentage = getUserPercentage(this.state.income, value);
+    //   return { ...expense, percentage };
+    // });
+    console.log(id, value);
+  }
+
   rowChange(id, value) {
-    console.log(id);
-    console.log(this.state.expenses[id - 1]);
-    this.setState();
+    value = parseInt(value);
+    // console.log(id);
+    // console.log(this.state.expenses[id - 1]);
+    this.populateActualPercentaje(id, value);
   }
 
   render() {

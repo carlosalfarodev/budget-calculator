@@ -7,30 +7,30 @@ class Table extends Component {
     const columns = [
       {
         dataField: "name",
-        text: "Name",
+        text: "Nombre",
         editable: (content, row, rowIndex, columnIndex) => false
       },
       {
-        dataField: "cantidad",
-        text: "Your Amount"
+        dataField: "amount",
+        text: "Su Cantidad"
       },
       {
         dataField: "percentage",
-        text: "Your Percentage",
+        text: "Su Porcentaje",
         editable: (content, row, rowIndex, columnIndex) => false
       },
       {
-        dataField: "recommendedCantidad",
-        text: "Recommended $",
+        dataField: "recommendedAmount",
+        text: "$ Recomendada",
         editable: (content, row, rowIndex, columnIndex) => false
       },
       {
         dataField: "recommendedPercentage",
-        text: "Recommended %",
+        text: "% Recomendado",
         editable: (content, row, rowIndex, columnIndex) => false
       },
       {
-        dataField: "diferencia",
+        dataField: "difference",
         text: "$ - % Diferencia",
         editable: (content, row, rowIndex, columnIndex) => false
       }
