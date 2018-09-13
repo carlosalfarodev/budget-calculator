@@ -18,7 +18,7 @@ class App extends Component {
           id: 1,
           name: "Diezmos",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 10,
           difference: 0
@@ -27,7 +27,7 @@ class App extends Component {
           id: 2,
           name: "Ahorros",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 10,
           difference: 0
@@ -36,7 +36,7 @@ class App extends Component {
           id: 3,
           name: "Comida",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 13,
           difference: 0
@@ -45,7 +45,7 @@ class App extends Component {
           id: 4,
           name: "Servicios Publicos",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 10,
           difference: 0
@@ -54,7 +54,7 @@ class App extends Component {
           id: 5,
           name: "Vivienda",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 25,
           difference: 0
@@ -63,7 +63,7 @@ class App extends Component {
           id: 6,
           name: "Transporte",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 15,
           difference: 0
@@ -72,7 +72,7 @@ class App extends Component {
           id: 7,
           name: "Medico",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 3,
           difference: 0
@@ -81,7 +81,7 @@ class App extends Component {
           id: 8,
           name: "Ropa",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 8,
           difference: 0
@@ -90,7 +90,7 @@ class App extends Component {
           id: 9,
           name: "Personal",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 8,
           difference: 0
@@ -99,7 +99,7 @@ class App extends Component {
           id: 10,
           name: "Deudas",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 0,
           difference: 0
@@ -108,7 +108,7 @@ class App extends Component {
           id: 11,
           name: "Recreasion",
           amount: "",
-          percentage: "",
+          percentage: 0,
           recommendedAmount: 0,
           recommendedPercentage: 8,
           difference: 0
@@ -126,21 +126,18 @@ class App extends Component {
   handleChange(event) {
     event.preventDefault();
 
-    const value = event.target.value;
-
+    let value = event.target.value;
     this.setState(prevState => {
       return {
         income: value,
-        percentageUsed: getPercentageUsed(
-          prevState.income,
-          prevState.totalExpenses
-        ),
         expenses: this.populateRecommended(value)
       };
     });
   }
 
   populateRecommended(income) {
+    income = income.replace(/,/g, "");
+    parseInt(income, 10);
     return this.state.expenses.map(expense => {
       const recommendedAmount = getPercentage(
         income,
@@ -151,11 +148,11 @@ class App extends Component {
   }
 
   rowChange(id, value) {
-    value = parseInt(value, 10);
-
     if (!value) {
       return 0;
     } else {
+      value = value.replace(/,/g, "");
+      parseInt(value, 10);
       let stateCopy = Object.assign({}, this.state);
       stateCopy.expenses[id - 1].percentage = getUserPercentage(
         this.state.income,
@@ -165,9 +162,22 @@ class App extends Component {
         stateCopy.expenses[id - 1].recommendedPercentage -
         stateCopy.expenses[id - 1].percentage
       ).toFixed(2);
+      stateCopy.totalExpenses = this.getTotalExpenses(
+        stateCopy.expenses,
+        stateCopy.totalExpenses
+      );
+      stateCopy.percentageUsed = getPercentageUsed(
+        stateCopy.income,
+        stateCopy.totalExpenses
+      );
       this.setState(stateCopy);
-      console.log(this.state.expenses);
     }
+  }
+
+  getTotalExpenses([...expenses]) {
+    return expenses.reduce((acc, item) => {
+      return acc + (parseInt(item.amount.replace(/,/g, ""), 10) || 0);
+    }, 0);
   }
 
   render() {
