@@ -10,9 +10,9 @@ class Balance extends Component {
     return (
       <div>
         <h3>Total de Gastos</h3>
-        <p style={style}>{`$${this.props.total.toFixed(2)}`}</p>
+        <p style={style}>{`$ ${this.props.total.toFixed(2)}`}</p>
         <h3>Total %</h3>
-        <p style={style}>{this.props.percentage.toFixed(2)}</p>
+        <p style={style}>{`% ${this.props.percentage.toFixed(2)}`}</p>
       </div>
     );
   }

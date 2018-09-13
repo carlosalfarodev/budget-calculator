@@ -18,7 +18,7 @@ class App extends Component {
           id: 1,
           name: "Diezmos",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 10,
           difference: 0
@@ -27,7 +27,7 @@ class App extends Component {
           id: 2,
           name: "Ahorros",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 10,
           difference: 0
@@ -36,7 +36,7 @@ class App extends Component {
           id: 3,
           name: "Comida",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 13,
           difference: 0
@@ -45,7 +45,7 @@ class App extends Component {
           id: 4,
           name: "Servicios Publicos",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 10,
           difference: 0
@@ -54,7 +54,7 @@ class App extends Component {
           id: 5,
           name: "Vivienda",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 25,
           difference: 0
@@ -63,7 +63,7 @@ class App extends Component {
           id: 6,
           name: "Transporte",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 15,
           difference: 0
@@ -72,7 +72,7 @@ class App extends Component {
           id: 7,
           name: "Medico",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 3,
           difference: 0
@@ -81,7 +81,7 @@ class App extends Component {
           id: 8,
           name: "Ropa",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 8,
           difference: 0
@@ -90,7 +90,7 @@ class App extends Component {
           id: 9,
           name: "Personal",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 8,
           difference: 0
@@ -99,7 +99,7 @@ class App extends Component {
           id: 10,
           name: "Deudas",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 0,
           difference: 0
@@ -108,7 +108,7 @@ class App extends Component {
           id: 11,
           name: "Recreasion",
           amount: "",
-          percentage: 0,
+          percentage: "",
           recommendedAmount: 0,
           recommendedPercentage: 8,
           difference: 0
@@ -162,6 +162,7 @@ class App extends Component {
         value
       );
       this.setState(stateCopy);
+      console.log(this.state.expenses);
     }
   }
 

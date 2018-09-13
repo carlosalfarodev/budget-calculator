@@ -3,7 +3,8 @@ export function getPercentage(amount, percentage) {
   return result.toFixed(2);
 }
 export function getUserPercentage(income, value) {
-  return (value / income) * 100;
+  const result = (value / income) * 100;
+  return result.toFixed(1);
 }
 
 export function getPercentageUsed(income, expenses) {
