@@ -4,7 +4,7 @@ class Balance extends Component {
   render() {
     let style = {
       color: this.props.percentage > 100 ? "red" : "green",
-      fontSize: 35
+      fontSize: 24
     };
 
     function numberWithCommas(num) {
@@ -15,11 +15,19 @@ class Balance extends Component {
     }
 
     return (
-      <div>
-        <h3>Total de Gastos</h3>
-        <p style={style}>{`$ ${numberWithCommas(this.props.total)}`}</p>
-        <h3>Total %</h3>
-        <p style={style}>{`${this.props.percentage} %`}</p>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <span>Total de Gastos: </span>
+            <span style={style}>{`$ ${numberWithCommas(
+              this.props.total
+            )}`}</span>
+          </div>
+          <div className="col">
+            <span>Porcentaje Total: </span>
+            <span style={style}>{`${this.props.percentage} %`}</span>
+          </div>
+        </div>
       </div>
     );
   }
