@@ -4,6 +4,14 @@ import BootstrapTable from "react-bootstrap-table-next";
 
 class Table extends Component {
   render() {
+    function percentageFormater(cell, row) {
+      return (
+        <span>
+          <strong>{cell} %</strong>
+        </span>
+      );
+    }
+
     const columns = [
       {
         dataField: "name",
@@ -17,6 +25,7 @@ class Table extends Component {
       {
         dataField: "percentage",
         text: "Su Porcentaje",
+        formatter: percentageFormater,
         editable: (content, row, rowIndex, columnIndex) => false
       },
       {
@@ -27,11 +36,24 @@ class Table extends Component {
       {
         dataField: "recommendedPercentage",
         text: "% Recomendado",
+        formatter: percentageFormater,
         editable: (content, row, rowIndex, columnIndex) => false
       },
       {
         dataField: "difference",
         text: "$ - % Diferencia",
+        formatter: percentageFormater,
+        style: (cell, row, rowIndex, colIndex) => {
+          if (cell < 0) {
+            return {
+              color: "red"
+            };
+          } else {
+            return {
+              color: "green"
+            };
+          }
+        },
         editable: (content, row, rowIndex, columnIndex) => false
       }
     ];

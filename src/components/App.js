@@ -161,6 +161,10 @@ class App extends Component {
         this.state.income,
         value
       );
+      stateCopy.expenses[id - 1].difference = (
+        stateCopy.expenses[id - 1].recommendedPercentage -
+        stateCopy.expenses[id - 1].percentage
+      ).toFixed(2);
       this.setState(stateCopy);
       console.log(this.state.expenses);
     }
