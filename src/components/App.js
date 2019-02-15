@@ -192,7 +192,7 @@ class App extends Component {
         <div className="container">
           <Header />
           <Card income={income} handle={this.handleChange} />
-          <div className="table-responsive-sm">
+          <div className="table-responsive-md">
             <Table data={this.state.expenses} edit={this.rowChange} />
           </div>
           <Balance
