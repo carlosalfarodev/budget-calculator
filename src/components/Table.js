@@ -16,28 +16,43 @@ class Table extends Component {
       {
         dataField: "name",
         text: "Nombre",
-        editable: (content, row, rowIndex, columnIndex) => false
+        editable: (content, row, rowIndex, columnIndex) => false,
+        headerStyle: (column, colIndex) => {
+          return { backgroundColor: "#7DB93F", color: "#fff" };
+        }
       },
       {
         dataField: "amount",
-        text: "Su Cantidad"
+        text: "Su Cantidad",
+        headerStyle: (column, colIndex) => {
+          return { backgroundColor: "#7DB93F", color: "#fff" };
+        }
       },
       {
         dataField: "percentage",
         text: "Su Porcentaje",
         formatter: percentageFormater,
-        editable: (content, row, rowIndex, columnIndex) => false
+        editable: (content, row, rowIndex, columnIndex) => false,
+        headerStyle: (column, colIndex) => {
+          return { backgroundColor: "#7DB93F", color: "#fff" };
+        }
       },
       {
         dataField: "recommendedAmount",
         text: "$ Recomendada",
-        editable: (content, row, rowIndex, columnIndex) => false
+        editable: (content, row, rowIndex, columnIndex) => false,
+        headerStyle: (column, colIndex) => {
+          return { backgroundColor: "#7DB93F", color: "#fff" };
+        }
       },
       {
         dataField: "recommendedPercentage",
         text: "% Recomendado",
         formatter: percentageFormater,
-        editable: (content, row, rowIndex, columnIndex) => false
+        editable: (content, row, rowIndex, columnIndex) => false,
+        headerStyle: (column, colIndex) => {
+          return { backgroundColor: "#7DB93F", color: "#fff" };
+        }
       },
       {
         dataField: "difference",
@@ -54,7 +69,10 @@ class Table extends Component {
             };
           }
         },
-        editable: (content, row, rowIndex, columnIndex) => false
+        editable: (content, row, rowIndex, columnIndex) => false,
+        headerStyle: (column, colIndex) => {
+          return { backgroundColor: "#7DB93F", color: "#fff" };
+        }
       }
     ];
 

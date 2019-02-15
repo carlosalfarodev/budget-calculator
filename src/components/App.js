@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Header from "./Header";
 import Card from "./Card";
+import Header from "./Header";
 import Balance from "./Balance";
 import Table from "./Table";
 import {
@@ -83,7 +83,7 @@ class App extends Component {
           amount: "",
           percentage: 0,
           recommendedAmount: 0,
-          recommendedPercentage: 8,
+          recommendedPercentage: 3,
           difference: 0
         },
         {
@@ -92,7 +92,7 @@ class App extends Component {
           amount: "",
           percentage: 0,
           recommendedAmount: 0,
-          recommendedPercentage: 8,
+          recommendedPercentage: 3,
           difference: 0
         },
         {
@@ -101,7 +101,7 @@ class App extends Component {
           amount: "",
           percentage: 0,
           recommendedAmount: 0,
-          recommendedPercentage: 0,
+          recommendedPercentage: 5,
           difference: 0
         },
         {
@@ -110,7 +110,7 @@ class App extends Component {
           amount: "",
           percentage: 0,
           recommendedAmount: 0,
-          recommendedPercentage: 8,
+          recommendedPercentage: 3,
           difference: 0
         }
       ],
@@ -165,7 +165,7 @@ class App extends Component {
       stateCopy.totalExpenses = this.getTotalExpenses(
         stateCopy.expenses,
         stateCopy.totalExpenses
-      );
+      ).toFixed(2);
       stateCopy.percentageUsed = getPercentageUsed(
         stateCopy.income,
         stateCopy.totalExpenses
@@ -180,15 +180,21 @@ class App extends Component {
     }, 0);
   }
 
+  refreshUserPercentages(income, expenses) {
+    return;
+  }
+
   render() {
     const income = this.state.income;
 
     return (
       <div className="App">
-        <Header />
         <div className="container">
+          <Header />
           <Card income={income} handle={this.handleChange} />
-          <Table data={this.state.expenses} edit={this.rowChange} />
+          <div className="table-responsive-sm">
+            <Table data={this.state.expenses} edit={this.rowChange} />
+          </div>
           <Balance
             total={this.state.totalExpenses}
             percentage={this.state.percentageUsed}
